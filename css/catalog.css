@@ -1,0 +1,49 @@
+.catalog {
+    margin-bottom: 80px;
+}
+
+.catalog__order {
+    min-height: 48px;
+    margin-bottom: 30px;
+}
+
+.catalog__title { 
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 34px;
+    margin-bottom: 16px;
+}
+
+/* сетка товаров с автозаполнением колонок */
+.catalog__list {
+    display: grid;
+    /* высота и ширина колонки */
+    grid-template-columns: repeat(auto-fit, 145px);
+    /* расстояние между карточками */
+    gap: 10px;
+}
+
+@media (min-width: 1024px) {
+    .catalog {
+        margin-bottom: 100px;
+    }
+    .catalog__container {
+        display: flex;
+        gap: 30px;
+    }
+    .catalog__order {
+        padding-top: 72px;
+    }
+    .catalog__wrapper {
+        /* карточки товара занять все свободное пространство */
+        flex-grow: 1;
+    }
+    .catalog__title {
+        font-weight: 600;
+        margin-bottom: 24px;
+    }
+    .catalog__list {
+        grid-template-columns: repeat(auto-fit, 300px);
+        gap: 30px;
+    }
+}

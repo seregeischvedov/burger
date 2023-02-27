@@ -1,0 +1,242 @@
+/* это корзина, здесь будут стили закрытой и открытой корзины с карточками товара */
+.order {
+    position: relative;
+}
+
+/* открытая корзина */
+.order__wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.16);
+    border-radius: 12px;
+    padding: 16px 10px;
+}
+
+.order__wpar-title {
+    /* располагаем элементы справа и слева и отталкиваем друг от друга */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+}
+
+/* корзина после выбора товара */
+.order__wpar-title:after {
+    content: '';
+    position: absolute;
+    outline: 3px solid transparent;
+    inset: 0;
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+/* когда корзина попадает в фокус, при tab? то выделяется рамкой желтой */
+.order__wpar-title:focus-visible:after {
+    outline-color: #FFAB08;
+}
+
+.order_open .order__wrap_title {
+    /* когда корзина с товарами открыта, то отступ снизу от заголовка Корзина - 8px */
+    margin-bottom: 8px;
+}
+
+.order__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    margin-bottom: 8px;
+}
+
+.order__count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    line-height: 14px;
+    width: 32px;
+    height: 16px;
+    background: #F2F2F3;
+    border-radius: 6px;
+}
+
+.order__wrap_list {
+    /* скрывается заказ в корзине */
+    display: none;
+}
+
+.order_open .order__wrap_list {
+    /* появляется заказ в корзине */
+    display: block;
+}
+
+.order__list {
+    margin-bottom: 13px;
+}
+
+/* стилизуем карточки в корзине */
+.order__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    /* линия под карточкой товара в корзине */
+    border-bottom: 1px solid #F2F2F3;
+}
+
+/* чтобы была линия сверху только над первым элементом */
+.order__item:first-child {
+    border-top: 1px solid #F2F2F3;
+}
+
+.order__image {
+    width: 64px;
+    height: 52px;
+    border-radius: 8px;
+}
+
+.order__product {
+    /* элементы занимают доступное пространстов, 1 - доступное свободное пространство распределяется между элементами */
+    flex-grow: 1;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+.order__product-title {
+    font-weight: 400;
+    margin-bottom: 1px;
+}
+.order__product-weight {
+    color: #B1B1B1;
+    margin-bottom: 6px;
+}
+
+.order__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    margin-bottom: 19px;
+}
+.order__submit {
+    padding: 9px;
+    width: 100%;
+    background: #FF7020;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    transition: transform .2s ease, background-color .4s ease-in-out;
+}
+.order__submit:hover {
+    background-color: #FFAB08;
+}
+/* tab - состояние элемента при клике по нему мышкой или при выборе с помощью клавиши Tab на клавиатуре */
+.order__submit:focus-visible {
+    background-color: #F86310;
+}
+/* когда кнопка активна, при клике будет смещаться вниз и вправо на 3 пикс */
+.order__submit:active {
+    transform: translate(3px, 3px);
+}
+/* когда кнопка неактивна */
+.order__submit:disabled {
+    background-color: #F9F9F9;
+    color: #ACACAC;
+}
+.order__wrapp-apeal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order__apeal {
+    font-size: 10px;
+    line-height: 24px;
+    padding-left: 32px;
+    background: url('../img/delivery.png') left/24px no-repeat;
+}
+.order__close {
+    font-size: 10px;
+    line-height: 14px;
+    color: #B1B1B1;
+}
+/* когда корзина пуста */
+.order__empty {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+/* адаптив */
+@media (min-width: 768px) {
+    /* уменьшили ширину корзины по макету */
+    /* когда закрыта */
+    .order {
+        width: 145px;
+        /* плавный переход */
+        transition: width 0.1s ease-in-out;
+    }
+    /* когда открыта */
+    .order.order_open {
+        width: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .order {
+        width: 300px;
+    }
+    .order__wrapper {
+        /* чтобы корзина встала в одну линию с каталогом товаров */
+        position: unset;
+        padding: 24px 16px;  
+    }
+    .order__wrap_title {
+        margin-bottom: 12px;
+        pointer-events: none;
+    }
+    /* убрали желтую рамку вокруг корзины */
+    .order__wpar-title:after {
+        content: none;
+    }
+    .order__title {
+        font-size: 24px;
+    }
+    .order__count {
+        width: 41px;
+        height: 20px;
+        font-size: 12px;
+    }
+    .order__item {
+        padding: 15px 0;
+    }
+    .order__wrap_list {
+        /* чтобы корзина всегда показывалась. Если хочешь, чтобы сварачивалась, то удали diaplay: block */
+        display: block;
+        margin-bottom: 16px;
+    }
+    .order__close {
+        /* скрыли кнопку Свернуть как в макете */
+        display: none;
+    }
+    .order__total {
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+    .order__submit {
+        padding: 11px;
+        border-radius: 12px;
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .order__apeal {
+        font-size: 12px; 
+    }
+}

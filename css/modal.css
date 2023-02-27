@@ -1,0 +1,64 @@
+/* для модальных окон общие стили */
+.modal {
+    position: fixed;
+    /* растянуть на весь экран */
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    /* если не вмещается в экран, то будет скролиться */
+    overflow-y: auto;
+    /* по-умолчанию скрыто */
+    display: none;
+}
+/* когда открыто - класс активности */
+.modal_open {
+    display: flex;
+}
+/* часть внутри окна, где будет располагаться весь контент */
+.modal__main {
+    position: relative;
+    /* убрать курсор */
+    cursor: default;
+    /* центровка  */
+    margin: auto;
+}
+/* крестик - закрыть окно */
+.modal__close {
+    /* крестику задали цвет, color так как у svg прописано свойство currentColor */
+    color: #B1B1B1;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* при наведении рамка прозрачная */
+    outline: 1px transparent;
+    outline-offset: 3px;
+    border-radius: 3px;
+    /* крестик плавно будет менять цвет */
+    transition: color .3s ease-in-out;
+}
+/* при наведении крестик становится оранжевым */
+.modal__close:hover {
+    color: #ff7020;
+}
+/* при наведении используй :hover а так focus - когда tab перемещаешься крестик становится оранж */
+.modal__close:focus-visible {
+    color: #ff7020;
+    outline-color: #ff7020;
+}
+
+
+@media (min-width: 480px) {
+    .modal {
+        padding: 10px;
+    }   
+}
+
+@media (min-width: 1024px) {
+    .modal {
+        padding: 20px;
+    } 
+    .modal__close {
+        top: 24px;
+        right: 24px;
+    }   
+}
